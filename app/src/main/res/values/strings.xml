@@ -15,4 +15,12 @@
         be added.
     </string>
     <string name="coffee_list">Coffee List</string>
+    <string name="espresso_title">ESPRESSO</string>
+    <string name="espresso_desc">Strong black coffee produced by forcing hot water through finely-ground coffee.</string>
+
+    <string name="cappuccino_title">CAPPUCCINO</string>
+    <string name="cappuccino_desc">Equal parts espresso, steamed milk, and milk foam. Typically served hot.</string>
+
+    <!-- Back button text -->
+    <string name="btn_back">Back</string>
 </resources>
