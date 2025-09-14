@@ -7,6 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
+interface CoffeeListener {
+    fun onSelected(id: Int)
+}
+
 class DetailFragment : Fragment() {
     private val coffeeTitle: TextView?
         get() = view?.findViewById(R.id.coffee_title)
@@ -24,6 +28,7 @@ class DetailFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
+
     fun setCoffeeData(id: Int){
         when(id){
             R.id.affogato -> {
@@ -41,8 +46,20 @@ class DetailFragment : Fragment() {
         }
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val coffeeId = arguments?.getInt(COFFEE_ID, 0) ?: 0
+        setCoffeeData(coffeeId)
+    }
+
     companion object {
+        private const val COFFEE_ID = "COFFEE_ID"
+
         @JvmStatic
-        fun newInstance() = DetailFragment()
+        fun newInstance(coffeeId: Int) = DetailFragment().apply {
+            arguments = Bundle().apply {
+                putInt(COFFEE_ID, coffeeId)
+            }
+        }
     }
 }
